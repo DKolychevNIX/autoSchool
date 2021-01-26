@@ -1,0 +1,130 @@
+Index: Module1/task2.5/src/com/company/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Module1/task2.5/src/com/company/Main.java b/Module1/task2.5/src/com/company/Main.java
+--- a/Module1/task2.5/src/com/company/Main.java	(revision 5c8723d01b1dc1c0fd6617e72378f26208ab7fad)
++++ b/Module1/task2.5/src/com/company/Main.java	(date 1611660916235)
+@@ -10,7 +10,7 @@
+     public static void main(String[] args) throws IOException {
+ 	// write your code here
+         System.out.println("\n TASK 1. return max of 20 elements\n");
+-        int[] array = new int[20];
++        int[] array = new int[20];  //Лучше сразу писать int[] array = createArray();
+         array = createArray();
+ 
+         int x = max(array);
+@@ -88,8 +88,8 @@
+         int[] arr = new int[20];
+         System.out.println("\nPlease enter 20 Integer values:\n");
+         for (int i=0; i < arr.length; i++){
+-            String s = reader.readLine();
+-            arr[i] = Integer.parseInt(s);
++            String s = reader.readLine();   //Если вместо BufferReader использовать Scanner, то тут можно написать reader.nextInt()
++            arr[i] = Integer.parseInt(s);   //И не надо будет парсить строку в инт
+         }
+ 
+         return arr;
+Index: Module1/task2.3/src/com/company/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Module1/task2.3/src/com/company/Main.java b/Module1/task2.3/src/com/company/Main.java
+--- a/Module1/task2.3/src/com/company/Main.java	(revision 5c8723d01b1dc1c0fd6617e72378f26208ab7fad)
++++ b/Module1/task2.3/src/com/company/Main.java	(date 1611660452394)
+@@ -7,7 +7,7 @@
+     public static void main(String[] args) {
+ 	// Task 2.3
+         Scanner in = new Scanner(System.in);
+-        /*System.out.print("\nPlease enter two numbers: ");
++        /*System.out.print("\nPlease enter two numbers: ");   //Если это раскомментить, то получим конфликт переменной. Я у себя подправил, но лучше так не оставлять
+         int num1 = in.nextInt();
+         int num2 = in.nextInt();
+         practice1(num1, num2);
+@@ -47,8 +47,8 @@
+ 
+     static void practice3(float a){
+         // 0кругляем число
+-        float a10 = a * 10;
+-        int b = (int) a10;
++        float a10 = a * 10;  //Можно использовать System.out.println(Math.round(a)); вместо того, чтобы реализовывать округление (но тут уже вопросы к создателям задачи)
++        int b = (int) a10;   //Но, в целом - всё ок
+         int num = b / 10;
+         int result = num;
+         int rest = b % 10;
+Index: Module1/task2.4/src/com/company/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Module1/task2.4/src/com/company/Main.java b/Module1/task2.4/src/com/company/Main.java
+--- a/Module1/task2.4/src/com/company/Main.java	(revision 5c8723d01b1dc1c0fd6617e72378f26208ab7fad)
++++ b/Module1/task2.4/src/com/company/Main.java	(date 1611660690700)
+@@ -25,19 +25,37 @@
+             System.out.printf("\nLine is 2 chars only: starts with %s and ends with %s", start, end);
+         }
+ 
++//если ввести строку "1234567890", то среднего символа в ней нет (5 символов слева и 5 справа).
++// А у тебя выводит средним символом "5", что не совсем корректно
++// Попробуй решить не через line.substring(), a через line.charAt()
++
++
+         // Подсчитываем кол-во пробелов
+         int space_cnt = 0;
+         String restOfLine = line;
+         int pos;
+         do {
+-            length = restOfLine.length();
++            length = restOfLine.length();   //Не обязательнохранить размер строки в отдельной переменной
+             pos = restOfLine.indexOf(' ');
+             if (pos > -1){
+                 space_cnt++;
+-                restOfLine = restOfLine.substring(pos+1, length);
++                restOfLine = restOfLine.substring(pos+1, length);   //Можно сразу использовать restOfLine.length() вместо length
+             }
+         } while (pos > -1);
+         System.out.printf("\nProvided line contains %d white spaces.", space_cnt);
++
++//Вот ещё пара вариантов решения:
++// int spaceCount = 0;
++//        for (char c : x.toCharArray()) {
++//            if (c == ' ') {
++//                spaceCount++;
++//            }
++//        }
++//или, даже:
++//int n = str.split(" ").length - 1;
++//   System.out.println("Количество пробелов: " + n);
++
++
+         // выводим первое предложение
+         pos = line.indexOf('.');
+         if (pos > 0){
+Index: Module1/task2.6/src/com/company/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Module1/task2.6/src/com/company/Main.java b/Module1/task2.6/src/com/company/Main.java
+--- a/Module1/task2.6/src/com/company/Main.java	(revision 5c8723d01b1dc1c0fd6617e72378f26208ab7fad)
++++ b/Module1/task2.6/src/com/company/Main.java	(date 1611662378662)
+@@ -21,7 +21,7 @@
+         Scanner nums = new Scanner(System.in);
+         Scanner names = new Scanner(System.in);
+         System.out.println("#1 Enter 2 numbers and I will return the MIN: ");
+-        //Scanner nums = new Scanner(System.in);
++        //Scanner nums = new Scanner(System.in); - Не совсем мне понятен этот коммент. Просто забыл? ))
+         int num1 = nums.nextInt();
+         int num2 = nums.nextInt();
+         if (num1 > num2) {
+@@ -214,7 +214,7 @@
+ 
+ 
+ 
+-
++//Лучше не оставлять такие пустые места ))
+ 
+ 
+ 

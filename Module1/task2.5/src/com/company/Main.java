@@ -10,8 +10,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
 	// write your code here
         System.out.println("\n TASK 1. return max of 20 elements\n");
-        int[] array = new int[20];
-        array = createArray();
+        //int[] array = new int[20];
+        int[] array = createArray();
 
         int x = max(array);
         System.out.printf("\n Maximum entered value was - %d%n", x);

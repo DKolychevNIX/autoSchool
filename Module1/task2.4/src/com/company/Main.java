@@ -10,17 +10,22 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.print("\nEnter a line: ");
         String line = in.nextLine();
-        // Крайние и средний символы
-        int length = line.length();
-        String start = line.substring(0, 1);
-        String end = line.substring(length-1, length);
-        if (length > 2){
-            int middle = length / 2;
-            if (length%2 == 0){
+        // Крайние и средний символ
+        char start = line.charAt(0);
+        char end = line.charAt(line.length() - 1);
+        if (line.length() > 2){
+            /*int middle = line.length() / 2;
+            if (line.length()%2 == 0){
                 middle--;
             }
             String middchar = line.substring(middle, middle+1);
             System.out.printf("\nLine starts with %s, middle char is %s, ends with %s", start, middchar, end);
+             */
+            if (line.length()%2 == 0){
+                System.out.printf("\nLine starts with %s and ends with %s. No middle char as there are even number of chars.", start, end);
+            } else {
+                System.out.printf("\nLine starts with %s, middle char is %s, ends with %s", start, line.charAt(line.length()/2), end);
+            }
         } else {
             System.out.printf("\nLine is 2 chars only: starts with %s and ends with %s", start, end);
         }
@@ -30,11 +35,10 @@ public class Main {
         String restOfLine = line;
         int pos;
         do {
-            length = restOfLine.length();
             pos = restOfLine.indexOf(' ');
             if (pos > -1){
                 space_cnt++;
-                restOfLine = restOfLine.substring(pos+1, length);
+                restOfLine = restOfLine.substring(pos+1, restOfLine.length());
             }
         } while (pos > -1);
         System.out.printf("\nProvided line contains %d white spaces.", space_cnt);
